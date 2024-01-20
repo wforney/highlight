@@ -1,9 +1,9 @@
 
 Microsoft Visual Studio Solution File, Format Version 11.00
 # Visual Studio 2010
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Highlight", "Highlight\Highlight.csproj", "{A78FD882-5894-4AA8-9BE5-D5E6F16E9A78}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Highlight", "Highlight\Highlight.csproj", "{A78FD882-5894-4AA8-9BE5-D5E6F16E9A78}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Highlight.Tests", "Highlight.Tests\Highlight.Tests.csproj", "{A34337ED-BA40-4F0F-8406-93D0FE4F257D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Highlight.Tests", "Highlight.Tests\Highlight.Tests.csproj", "{A34337ED-BA40-4F0F-8406-93D0FE4F257D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
