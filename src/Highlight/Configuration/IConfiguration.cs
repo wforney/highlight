@@ -1,10 +1,9 @@
-using System.Collections.Generic;
 using Highlight.Patterns;
+using System.Collections.Generic;
 
-namespace Highlight.Configuration
+namespace Highlight.Configuration;
+
+public interface IConfiguration
 {
-    public interface IConfiguration
-    {
-        IDictionary<string, Definition> Definitions { get; }
-    }
+    IDictionary<string, Definition> Definitions { get; }
 }

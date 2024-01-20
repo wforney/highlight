@@ -1,37 +1,24 @@
-using System;
 using Highlight.Configuration;
 using Highlight.Engines;
+using System;
 
-namespace Highlight
+namespace Highlight;
+
+public class Highlighter(IEngine engine, IConfiguration configuration)
 {
-    public class Highlighter
+    public IEngine Engine { get; set; } = engine;
+    public IConfiguration Configuration { get; set; } = configuration;
+
+    public Highlighter(IEngine engine) : this(engine, new DefaultConfiguration())
     {
-        public IEngine Engine { get; set; }
-        public IConfiguration Configuration { get; set; }
+    }
 
-        public Highlighter(IEngine engine, IConfiguration configuration)
-        {
-            Engine = engine;
-            Configuration = configuration;
-        }
+    public string Highlight(string definitionName, string input)
+    {
+        ArgumentNullException.ThrowIfNull(definitionName);
 
-        public Highlighter(IEngine engine)
-            : this(engine, new DefaultConfiguration())
-        {
-        }
-
-        public string Highlight(string definitionName, string input)
-        {
-            if (definitionName == null) {
-                throw new ArgumentNullException("definitionName");
-            }
-
-            if (Configuration.Definitions.ContainsKey(definitionName)) {
-                var definition = Configuration.Definitions[definitionName];
-                return Engine.Highlight(definition, input);
-            }
-
-            return input;
-        }
+        return Configuration.Definitions.TryGetValue(definitionName, out var value)
+            ? Engine.Highlight(value, input)
+            : input;
     }
 }

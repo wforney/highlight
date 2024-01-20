@@ -1,12 +1,8 @@
 using System.Xml.Linq;
 
-namespace Highlight.Configuration
+namespace Highlight.Configuration;
+
+public class DefaultConfiguration : XmlConfiguration
 {
-    public class DefaultConfiguration : XmlConfiguration
-    {
-        public DefaultConfiguration()
-        {
-            XmlDocument = XDocument.Parse(Resources.DefaultDefinitions);
-        }
-    }
+    public DefaultConfiguration() => XmlDocument = XDocument.Parse(Resources.DefaultDefinitions);
 }

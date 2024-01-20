@@ -1,24 +1,25 @@
-namespace Highlight.Patterns
+namespace Highlight.Patterns;
+
+public sealed class MarkupPattern(
+    string name,
+    Style style,
+    bool highlightAttributes,
+    ColorPair bracketColors,
+    ColorPair attributeNameColors,
+    ColorPair attributeValueColors)
+    : Pattern(name, style)
 {
-    public sealed class MarkupPattern : Pattern
+    public ColorPair AttributeNameColors { get; set; } = attributeNameColors;
+
+    public ColorPair AttributeValueColors { get; set; } = attributeValueColors;
+    
+    public ColorPair BracketColors { get; set; } = bracketColors;
+    
+    public bool HighlightAttributes { get; set; } = highlightAttributes;
+
+    public override string GetRegexPattern()
     {
-        public bool HighlightAttributes { get; set; }
-        public ColorPair BracketColors { get; set; }
-        public ColorPair AttributeNameColors { get; set; }
-        public ColorPair AttributeValueColors { get; set; }
-
-        public MarkupPattern(string name, Style style, bool highlightAttributes, ColorPair bracketColors, ColorPair attributeNameColors, ColorPair attributeValueColors)
-            : base(name, style)
-        {
-            HighlightAttributes = highlightAttributes;
-            BracketColors = bracketColors;
-            AttributeNameColors = attributeNameColors;
-            AttributeValueColors = attributeValueColors;
-        }
-
-        public override string GetRegexPattern()
-        {
-            return @"
+        return @"
                 (?'openTag'&lt;\??/?)
                 (?'ws1'\s*?)
                 (?'tagName'[\w\:]+)
@@ -35,6 +36,5 @@ namespace Highlight.Patterns
                 (?'ws5'\s*?)
                 (?'closeTag'[\/\?]?&gt;)
             ";
-        }
     }
 }
